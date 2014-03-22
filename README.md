@@ -1,5 +1,7 @@
 # PreCommit::Checkstyle
 
+[![Build Status](https://travis-ci.org/secondrotation/pre-commit-checkstyle.svg?branch=master)](https://travis-ci.org/secondrotation/pre-commit-checkstyle)
+
 [Checkstyle](http://checkstyle.sourceforge.net/) linter plugin for [pre-commit](https://github.com/jish/pre-commit). Useful for linting Java code.
 
 ## Installation
