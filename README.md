@@ -1,6 +1,6 @@
-# Pre::Commit::Checkstyle
+# PreCommit::Checkstyle
 
-TODO: Write a gem description
+[Checkstyle](http://checkstyle.sourceforge.net/) linter plugin for [pre-commit](https://github.com/jish/pre-commit). Useful for linting Java code.
 
 ## Installation
 
@@ -18,11 +18,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Make sure the gem is installed and setup the check in [pre-commit](https://github.com/jish/pre-commit) with:
+
+``` bash
+pre-commit enable git checks checkstyle
+```
+
+OR
+
+``` bash
+pre-commit enable yaml checks checkstyle
+```
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/pre-commit-checkstyle/fork )
+1. Fork it ( http://github.com/secondrotation/pre-commit-checkstyle/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
