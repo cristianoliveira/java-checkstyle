@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'pre-commit', github: 'jish/pre-commit'
-gem 'pry-debugger'
+gem 'pry-debugger', platforms: :mri
