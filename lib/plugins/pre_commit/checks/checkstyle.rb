@@ -1,4 +1,3 @@
-require 'open3'
 require 'pre-commit/checks/shell'
 
 module PreCommit
