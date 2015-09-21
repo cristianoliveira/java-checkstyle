@@ -7,9 +7,8 @@ module PreCommit
         staged_files = staged_files.grep(/\.java$/)
         return if staged_files.empty?
 
-        args = (jar_flag + config_file_flag + staged_files).join(' ')
-
-        execute("java #{args}")
+        args = ['java', jar_flag, config_file_flag, staged_files] 
+        execute(args)
       end
 
       def jar_flag
