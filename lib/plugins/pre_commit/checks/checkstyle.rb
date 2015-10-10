@@ -7,12 +7,12 @@ module PreCommit
         staged_files = staged_files.grep(/\.java$/)
         return if staged_files.empty?
 
-        args = ['java', jar_flag, config_file_flag, staged_files] 
+        args = ['java', jar_flag, config_file_flag, staged_files]
         execute(args)
       end
 
       def jar_flag
-        ['-jar', support_path('checkstyle-5.7-all.jar')]
+        ['-jar', support_path('checkstyle-6.11-all.jar')]
       end
 
       def support_path(file)
