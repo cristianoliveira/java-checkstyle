@@ -9,7 +9,7 @@
 
 Add this line to your application's Gemfile:
 
-    gem 'pre-commit-checkstyle'
+    gem 'java-checkstyle'
 
 And then execute:
 
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pre-commit-checkstyle
+    $ gem install java-checkstyle
 
 ## Usage
 
