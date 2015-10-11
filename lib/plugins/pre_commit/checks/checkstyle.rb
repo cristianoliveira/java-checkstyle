@@ -1,4 +1,5 @@
 require 'pre-commit/checks/shell'
+require_relative '../message/formatter'
 
 module PreCommit
   module Checks
@@ -8,7 +9,7 @@ module PreCommit
         return if staged_files.empty?
 
         args = ['java', jar_flag, config_file_flag, staged_files]
-        execute(args)
+        formatter.format(execute(args))
       end
 
       def jar_flag
@@ -29,6 +30,10 @@ module PreCommit
 
       def self.description
         'Runs coffeelint to detect errors'
+      end
+
+      def formatter
+        @formatter ||= PreCommit::Message::Formatter.new
       end
     end
   end

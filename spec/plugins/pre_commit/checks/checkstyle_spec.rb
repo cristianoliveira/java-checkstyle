@@ -4,7 +4,7 @@ require 'plugins/pre_commit/checks/checkstyle'
 describe PreCommit::Checks::Checkstyle do
   let(:config) {double(PreCommit::Configuration, get: '')}
   let(:custom_config) {double(PreCommit::Configuration,
-                              get: '/home/alex/Development/java-checkstyle/lib/pre-commit/support/checkstyle/google_checks.xml')}
+                                                get: fixture_file('google_checks.xml'))}
   let(:check) {PreCommit::Checks::Checkstyle.new(nil, config, [])}
   let(:custom_check) {PreCommit::Checks::Checkstyle.new(nil, custom_config, [])}
 
@@ -20,13 +20,10 @@ describe PreCommit::Checks::Checkstyle do
   it "fails for bad formatted code" do
     file = fixture_file("bad.java")
     expect(check.call([file])).to eq <<-ERROR
-Starting audit...
-    #{file}:1: error: Missing a Javadoc comment.
-    #{file}:1:1: error: Utility classes should not have a public or default constructor.
-    #{file}:2:3: error: Missing a Javadoc comment.
-    #{file}:2:27: error: Parameter args should be final.
-Audit done.
-Checkstyle ends with 4 errors.
+#{file}:1: error: Missing a Javadoc comment.
+#{file}:1:1: error: Utility classes should not have a public or default constructor.
+#{file}:2:3: error: Missing a Javadoc comment.
+#{file}:2:27: error: Parameter args should be final.
     ERROR
   end
 

@@ -3,13 +3,21 @@ require 'plugins/pre_commit/message/formatter'
 
 describe PreCommit::Message::Formatter do
   let(:formatter) { PreCommit::Message::Formatter.new }
+  
+  it "should return nil for empty output" do
+    output = nil
+    result = formatter.format output
+
+    expect(result).to be_nil
+  end
 
   it "should format output" do
 
     expected = "/fixtures/bad.java :1: error: Missing a Javadoc comment.
-    /fixtures/bad.java :1:1: error: Utility classes should not have a public or default constructor.
-    /fixtures/bad.java :2:3: error: Missing a Javadoc comment.
-    /fixtures/bad.java :2:27: error: Parameter args should be final."
+/fixtures/bad.java :1:1: error: Utility classes should not have a public or default constructor.
+/fixtures/bad.java :2:3: error: Missing a Javadoc comment.
+/fixtures/bad.java :2:27: error: Parameter args should be final.
+"
 
     output =  "Starting audit...
     /fixtures/bad.java :1: error: Missing a Javadoc comment.
