@@ -1,5 +1,5 @@
 module PreCommit
-  module Message 
+  module Message
     ##
     # Responsible for format a given output
     class Formatter
@@ -10,28 +10,28 @@ module PreCommit
       # @return [String] formatted output (may return nil)
       def format(errors)
         files = errors['checkstyle']['file']
-        
+
         return nil if files.empty?
         return format_single(files) unless files.is_a? Array
 
-        format_multiple files
+        format_multiple(files)
       end
 
-      private 
+      private
 
       def format_errors(errors)
-        errors.reduce(String.new) do |output, error| 
-          output += "  line: #{error['line']}:#{error['column']} error: #{error['message']}\n"
+        errors.reduce('') do |out, error|
+          out + "  line: #{error['line']}:#{error['column']}"\
+            " error: #{error['message']}\n"
         end
       end
 
       def format_single(file)
-          output = "File errors: #{file['name']} \n"
-          output + format_errors(file['error'])
+        "File errors: #{file['name']} \n" + format_errors(file['error'])
       end
 
       def format_multiple(files)
-        files.reduce(String.new) {|output, file| output += format_single(file)}
+        files.reduce('') { |a, e| a + format_single(e) }
       end
     end
   end

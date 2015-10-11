@@ -12,43 +12,41 @@ module PreCommit
     # for details see:
     # lib/pre-commit/support/checkstyle
     class Checkstyle < Shell
-
       ##
-      # Function called after pre-commit execution 
+      # Function called after pre-commit execution
       # this method receive the +staged_files+ from git
-      # 
-      # @param [String] Standard git ouput with staged files
       #
+      # @param [String] Standard git ouput with staged files
       def call(staged_files)
         staged_files = staged_files.grep(/\.java$/)
         return if staged_files.empty?
-        
+
         output = execute(args(staged_files))
         format(extract(output))
       end
 
       private
-      
+
       def args(staged_files)
         [
           'java',
-          jar_flag,
-          config_file_flag,
+          checkstyle_jar,
+          configuration_file,
           staged_files,
-          config_output_format
+          output_format
         ]
       end
 
-      def jar_flag
+      def checkstyle_jar
         ['-jar', Support::Path.relative_to('checkstyle-6.11-all.jar')]
       end
 
-      def config_file_flag
+      def configuration_file
         config_file ? ['-c', config_file] : []
       end
-      
-      def config_output_format
-        ['-f','xml']
+
+      def output_format
+        ['-f', 'xml']
       end
 
       def alternate_config_file
