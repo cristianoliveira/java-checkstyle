@@ -1,11 +1,13 @@
 module PreCommit
   module Message 
+    ##
+    # Responsible for format a given output
     class Formatter
       ##
       # Format output for a given +errors+ details
-      # @param [Hash] Errors details
+      #
+      # @param [Hash] JSON errors details
       # @return [String] formatted output (may return nil)
-      # 
       def format(errors)
         files = errors['checkstyle']['file']
         
@@ -19,7 +21,7 @@ module PreCommit
 
       def format_errors(errors)
         errors.reduce(String.new) do |output, error| 
-          output += "  line: #{error['line']}:#{error['column']} error: #{error['message']} \n"
+          output += "  line: #{error['line']}:#{error['column']} error: #{error['message']}\n"
         end
       end
 
