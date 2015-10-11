@@ -18,7 +18,7 @@ describe PreCommit::Checks::Checkstyle do
     file = fixture_file("bad.java")
 
     result = check.call([file])
-    
+
     expect(result).to include "File errors: #{file}"
     expect(result).to include "line: 1: error:"
     expect(result).to include "line: 1:1 error:"
@@ -26,15 +26,14 @@ describe PreCommit::Checks::Checkstyle do
     expect(result).to include "line: 2:27 error:"
   end
 
-
   it "should accept multiple fails" do
     # given
     file = fixture_file("bad.java")
     file2 = fixture_file("bad2.java")
-    
-    # when 
-    result = check.call([file, file2]) 
-    
+
+    # when
+    result = check.call([file, file2])
+
     # then
     expect(result).to include "File errors: #{file}"
     expect(result).to include "File errors: #{file2}"

@@ -4,56 +4,90 @@ require 'plugins/pre_commit/message/extractor'
 # Tests for PreCommit::Message::Extractor
 describe PreCommit::Message::Extractor do
   let(:extractor) { PreCommit::Message::Extractor.new }
-  let(:output) {
-'<?xml version="1.0" encoding="UTF-8"?>
-  <checkstyle version="6.11">
-     <file name="/Users/cristianoliveira/work/java-checkstyle/spec/fixtures/bad.java">
-       <error line="1" severity="error" message="some error message" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
-       <error line="11" column= "1 " severity= "warning" message="some error message" source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
-    </file>
-    <file name="/Users/cristianoliveira/work/java-checkstyle/spec/fixtures/bad2.java">
-       <error line="2 " column= "3 " severity= "error" message="some error message" source= "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck "/>
-       <error line="2 " column= "27 " severity= "error" message="some error message" source= "com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck "/>
-    </file>
-  </checkstyle>
-Checkstyle ends with 4 errors.' }
-  
-  it "should return empty file for nil output" do
-    output = nil
-    result = extractor.extract output
 
-    expect(result['checkstyle']['file']).to be_empty
+  context "empty output" do
+    it "should return empty file for nil output" do
+      result = extractor.extract nil
+      expect(result['checkstyle']['file']).to be_empty
+    end
+
+    it "should return empty file for empty output" do
+      result = extractor.extract ''
+      expect(result['checkstyle']['file']).to be_empty
+    end
   end
 
-  it "should extract files" do
-    result = extractor.extract output
-    expect(result['checkstyle']['file'].size).to eq 2
+  context "has one bad file" do
+    # given
+    let(:output) { IO.read(fixture_file("output_one_bad_file.log")) }
+
+    it "should contain one single file" do
+      result = extractor.extract output
+      expect(result['checkstyle']['file']).to be_a Hash
+    end
+
+    it "should contain its errors" do
+      result = extractor.extract output
+      expect(result['checkstyle']['file']['error'].size).to eq 2
+    end
+
+    it "should extract error details" do
+      expected = [
+          {
+            "line"=>"1",
+            "severity"=>"error",
+            "message"=>"some error message",
+            "source"=>"com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"
+          },
+          {
+            "line" => "11",
+            "column" => "1 ",
+            "severity" => "warning",
+            "message" => "some error message",
+            "source" => "com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"
+          }
+      ]
+
+      result = extractor.extract output
+      errors = result['checkstyle']['file']['error']
+      expect(errors).to eq expected
+    end
   end
 
-  it "should extract errors" do
-    result = extractor.extract output
-    expect(result['checkstyle']['file'][0]['error'].size).to eq 2
-  end
+  context "has multiple bad files" do
+    let(:output) { IO.read(fixture_file("output_two_bad_files.log")) }
 
-  it "should extract error details" do
-    expected = [
-        {
-          "line"=>"1", 
-          "severity"=>"error", 
-          "message"=>"some error message", 
-          "source"=>"com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"
-        },
-        {
-          "line" => "11",
-          "column" => "1 ",
-          "severity" => "warning", 
-          "message" => "some error message", 
-          "source" => "com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"
-        }
-    ]
+    it "should extract multiple files" do
+      result = extractor.extract output
+      expect(result['checkstyle']['file']).to be_a Array
+    end
 
-    result = extractor.extract output
-    errors = result['checkstyle']['file'][0]['error']
-    expect(errors).to eq expected
+    it "should extract their errors" do
+      result = extractor.extract output
+      expect(result['checkstyle']['file'][0]['error'].size).to eq 2
+      expect(result['checkstyle']['file'][1]['error'].size).to eq 2
+    end
+
+    it "should extract error details" do
+      expected = [
+          {
+            "line"=>"1",
+            "severity"=>"error",
+            "message"=>"some error message",
+            "source"=>"com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"
+          },
+          {
+            "line" => "11",
+            "column" => "1 ",
+            "severity" => "warning",
+            "message" => "some error message",
+            "source" => "com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"
+          }
+      ]
+
+      result = extractor.extract output
+      errors = result['checkstyle']['file'][0]['error']
+      expect(errors).to eq expected
+    end
   end
 end
