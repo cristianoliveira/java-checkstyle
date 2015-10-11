@@ -25,6 +25,10 @@ module PreCommit
         format(extract(output))
       end
 
+      def self.description
+        'Runs Checkstyle linter for java code.'
+      end
+
       private
 
       def args(staged_files)
@@ -51,10 +55,6 @@ module PreCommit
 
       def alternate_config_file
         Support::Path.relative_to('sun_checks.xml')
-      end
-
-      def self.description
-        'Runs coffeelint to detect errors'
       end
 
       def format(errors)

@@ -8,7 +8,11 @@ module PreCommit
       #
       # @param [Hash] JSON errors details
       # @return [String] formatted output (may return nil)
+      # @raise ArgumentError when input is empty
+      #
       def format(errors)
+        throw ArgumentError.new if errors.nil? || errors.empty?
+
         files = errors['checkstyle']['file']
 
         return nil if files.empty?
