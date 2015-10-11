@@ -1,6 +1,7 @@
-# PreCommit::Checkstyle
-
-[![Build Status](https://travis-ci.org/secondrotation/pre-commit-checkstyle.svg?branch=master)](https://travis-ci.org/secondrotation/pre-commit-checkstyle)
+## Java - Pre-Commit Checkstyle
+[![Build Status](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle.svg?branch=dev)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
+[![Code Climate](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
+[![Test Coverage](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
 
 [Checkstyle](http://checkstyle.sourceforge.net/) linter plugin for [pre-commit](https://github.com/jish/pre-commit). Useful for linting Java code.
 
@@ -39,3 +40,8 @@ pre-commit enable yaml checks checkstyle
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Authors:
+ - Allen Madsen (Original Version 0.0.1)
+ - Alex Rocha
+ - Cristian Oliveira
