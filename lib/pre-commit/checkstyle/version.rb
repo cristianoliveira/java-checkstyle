@@ -7,7 +7,7 @@ module PreCommit
   ##
   # CheckStyle Version
   # Authors:
-  #  Allen Madsen (Original Version 0.0.1) 
+  #  Allen Madsen (Original Version 0.0.1)
   #  Cristian Oliveira
   #  Alex Rocha
   module Checkstyle

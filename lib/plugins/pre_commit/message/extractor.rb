@@ -17,7 +17,7 @@ module PreCommit
         Crack::XML.parse(xml_content(output))
       end
 
-      private 
+      private
 
       def xml_content(raw_output)
         raw_output[/<(.*)>/m]
