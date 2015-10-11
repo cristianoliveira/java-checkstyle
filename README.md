@@ -7,6 +7,10 @@ Useful pre-commit hook for linting Java code.
 
 It uses the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plugin for [pre-commit](https://github.com/jish/pre-commit).
 
+## Demo
+
+![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/CristianOliveiraDaRosa/java-checkstyle/master/demo.png)
+
 ## Installation
 
 First install and setup the check in pre-commit:
