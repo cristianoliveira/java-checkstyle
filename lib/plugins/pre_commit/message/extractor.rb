@@ -6,8 +6,10 @@ module PreCommit
     # Responsible for extract error messages from terminal output 
     # 
     class Extractor 
+      EMPTY =  { 'checkstyle' => { 'file' => [] } }
+      
       def extract(output)
-        return nil if output.nil? || output.empty?
+        return EMPTY if output.nil? || output.empty?
         Crack::XML.parse(output[/<(.*)>/m])
       end
     end

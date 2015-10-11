@@ -1,5 +1,6 @@
 require 'pre-commit/checks/shell'
 require_relative '../message/extractor'
+require_relative '../message/formatter'
 
 module PreCommit
   module Checks
@@ -9,7 +10,8 @@ module PreCommit
         return if staged_files.empty?
 
         args = ['java', jar_flag, config_file_flag, staged_files, config_output_format]
-        extract(execute(args))
+        errors = extract(execute(args))
+        format_output(errors)
       end
       
       private
@@ -38,9 +40,9 @@ module PreCommit
         'Runs coffeelint to detect errors'
       end
 
-      def format(data)
+      def format_output(errors)
         @formatter ||= PreCommit::Message::Formatter.new
-        @formatter.format data
+        @formatter.format errors
       end
 
       def extract(data)

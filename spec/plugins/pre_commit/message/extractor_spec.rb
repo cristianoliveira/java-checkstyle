@@ -18,11 +18,11 @@ describe PreCommit::Message::Extractor do
   </checkstyle>
 Checkstyle ends with 4 errors.' }
   
-  it "should return nil for empty output" do
+  it "should return empty file for nil output" do
     output = nil
     result = extractor.extract output
 
-    expect(result).to be_nil
+    expect(result['checkstyle']['file']).to be_empty
   end
 
   it "should extract files" do
