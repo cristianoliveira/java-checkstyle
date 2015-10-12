@@ -4,13 +4,15 @@
 [![Code Climate](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
 [![Test Coverage](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
 
-Useful pre-commit hook for linting Java code. It uses as default [The Google Style Guide](https://google.github.io/styleguide/javaguide.html)
+Useful git pre-commit hook for linting Java code.
 
-It uses the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plugin for [pre-commit](https://github.com/jish/pre-commit).
+It uses as default [The Google Style Guide](https://google.github.io/styleguide/javaguide.html)
+and the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plugin for [pre-commit](https://github.com/jish/pre-commit).
 
 ## Demo
 
 ![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/CristianOliveiraDaRosa/java-checkstyle/master/readmedemo.png)
+[Don't know Leeroy Jenkins?](https://www.youtube.com/watch?v=mLyOj_QD4a4)
 
 ## Installation
 
@@ -22,6 +24,9 @@ First install the gems.
 ### Java Checkstyle Plugin
 
     gem install java-checkstyle
+
+##### (optional) If you use RVM
+Take a look here [Install with RVM](https://github.com/jish/pre-commit#rvm)
 
 ### Configuring
 Use the pre-commit command to generate a stub pre-commit hook.
@@ -47,28 +52,13 @@ pre-commit enable yaml checks checkstyle
 
 ### Result
 Every time you try to commit some java code with style errors it will validate
-before.
+for you ensuring that your code will be always awesome.
 
 ---
 #### Detailed version to install.
 Still don't work? Try the detailed version [here](https://github.com/CristianOliveiraDaRosa/java-checkstyle/blob/master/DETAILED_TUTORIAL.md)
 
 ---
-
-## Installing with RVM
-
-If you are using rvm you need to install pre-commit into the ```default``` gemset, because it does not use the ```current``` environment
-
-    $ rvm default do gem install pre-commit
-
-Alternatively you can configure pre-commit to use the ```current``` rvm gemset
-
-    $ git config pre-commit.ruby "rvm `rvm current` do ruby"
-
-More details about this part see on:
-[pre-commit](https://github.com/jish/pre-commit)
-
-And your pre-commit hook has been configured.
 
 ## Checkstyle Guide
 
