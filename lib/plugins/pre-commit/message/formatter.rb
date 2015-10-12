@@ -10,37 +10,32 @@ module PreCommit
       # @return [String] formatted output (may return nil)
       # @raise ArgumentError when input is empty
       #
-      def format(errors)
-        throw ArgumentError.new if errors.nil? || errors.empty?
+      def format(checkstyle)
+        throw ArgumentError.new if checkstyle.nil?
+        return nil if checkstyle.empty?
 
-        files = errors['checkstyle']['file']
-
-        return nil if files.empty?
-        return format_single(files) unless files.is_a? Array
-
-        format_multiple(files)
+        format_multiple(checkstyle.bad_files)
       end
 
       private
 
-      def line(error)
-        "  line: #{error['line']}:#{error['column']}"\
-          " error: #{error['message']}\n"
+      def format_multiple(files)
+        files.reduce('') { |a, e| a + format_single(e) }
+      end
+
+      def format_single(bad_file)
+        "File errors: #{bad_file.name} \n" + format_errors(bad_file.errors)
       end
 
       def format_errors(errors)
-        return line(errors) unless errors.is_a? Array
         errors.reduce('') do |out, error|
           out + line(error)
         end
       end
 
-      def format_single(file)
-        "File errors: #{file['name']} \n" + format_errors(file['error'])
-      end
-
-      def format_multiple(files)
-        files.reduce('') { |a, e| a + format_single(e) }
+      def line(error)
+        "  line: #{error['line']}:#{error['column']}"\
+          " error: #{error['message']}\n"
       end
     end
   end
