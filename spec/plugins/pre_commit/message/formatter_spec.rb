@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'plugins/pre_commit/message/formatter'
+require 'plugins/pre-commit/message/formatter'
 ##
 # Tests for PreCommit::Message::Formatter
 describe PreCommit::Message::Formatter do

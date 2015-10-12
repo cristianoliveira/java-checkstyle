@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'plugins/pre_commit/message/extractor'
+require 'plugins/pre-commit/message/extractor'
 ##
 # Tests for PreCommit::Message::Extractor
 describe PreCommit::Message::Extractor do
