@@ -12,7 +12,7 @@ and the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plug
 ## Demo
 
 ![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/CristianOliveiraDaRosa/java-checkstyle/master/readmedemo.png)
-[Don't know Leeroy Jenkins?](https://www.youtube.com/watch?v=mLyOj_QD4a4)
+[Don't you know who is Leeroy Jenkins?](https://www.youtube.com/watch?v=mLyOj_QD4a4)
 
 ## Installation
 
