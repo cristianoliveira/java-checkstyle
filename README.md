@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
 [![Test Coverage](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
 
-Useful pre-commit hook for linting Java code.
+Useful pre-commit hook for linting Java code. It uses as default [The Google Style Guide](https://google.github.io/styleguide/javaguide.html)
 
 It uses the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plugin for [pre-commit](https://github.com/jish/pre-commit).
 
@@ -14,20 +14,48 @@ It uses the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a 
 
 ## Installation
 
-First install and setup the check in pre-commit:
+First install the gems.
 ### Pre-Commit Checkstyle
-Install the gem
 
-    $ gem install pre-commit
+    gem install pre-commit
 
-Use the pre-commit command to generate a stub pre-commit hook
+### Java Checkstyle Plugin
 
-    # In your git repo
-    $ pre-commit install
+    gem install java-checkstyle
 
-This creates a .git/hooks/pre-commit script which will check your git config and run checks that are enabled.
+### Configuring
+Use the pre-commit command to generate a stub pre-commit hook.
+Inside folder of your git repo:
 
-**RVM**
+```bash
+pre-commit install
+```
+
+It will create a .git/hooks/pre-commit script which will check your git config and run checks that are enabled.
+
+### Enabling checks
+
+``` bash
+pre-commit enable git checks checkstyle
+```
+
+OR
+
+``` bash
+pre-commit enable yaml checks checkstyle
+```
+
+### Result
+Every time you try to commit some java code with style errors it will validate
+before.
+
+---
+#### Detailed version to install.
+Still don't work? Try the detailed version [here](https://github.com/CristianOliveiraDaRosa/java-checkstyle/blob/master/DETAILED_TUTORIAL.md)
+
+---
+
+## Installing with RVM
 
 If you are using rvm you need to install pre-commit into the ```default``` gemset, because it does not use the ```current``` environment
 
@@ -40,35 +68,11 @@ Alternatively you can configure pre-commit to use the ```current``` rvm gemset
 More details about this part see on:
 [pre-commit](https://github.com/jish/pre-commit)
 
-### Java-checkstyle
+And your pre-commit hook has been configured.
 
-Add this line to your application's Gemfile:
+## Checkstyle Guide
 
-    gem 'java-checkstyle'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install java-checkstyle
-
-## Enabling checks
-
-Make sure the gem is installed and setup the check in [pre-commit](https://github.com/jish/pre-commit) with:
-
-``` bash
-pre-commit enable git checks checkstyle
-```
-
-OR
-
-``` bash
-pre-commit enable yaml checks checkstyle
-```
-
-And your pre-commit hook is configured.
+It uses as default [The Google Style Guide](https://google.github.io/styleguide/javaguide.html).
 
 ## Tests
 Running tests with rspec
