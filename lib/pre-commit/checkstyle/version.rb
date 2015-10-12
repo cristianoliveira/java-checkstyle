@@ -11,6 +11,6 @@ module PreCommit
   #  Cristian Oliveira
   #  Alex Rocha
   module Checkstyle
-    VERSION = '0.0.3'
+    VERSION = '1.0.0'
   end
 end
