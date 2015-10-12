@@ -10,7 +10,7 @@ It uses the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a 
 
 ## Demo
 
-![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/CristianOliveiraDaRosa/java-checkstyle/master/demo.png)
+![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/CristianOliveiraDaRosa/java-checkstyle/master/readmedemo.png)
 
 ## Installation
 
