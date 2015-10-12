@@ -1,4 +1,5 @@
 ## Java - Pre-Commit Checkstyle
+[![Gem Version](https://badge.fury.io/rb/java-checkstyle.svg)](https://badge.fury.io/rb/java-checkstyle)
 [![Build Status](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle.svg?branch=dev)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
 [![Code Climate](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
 [![Test Coverage](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
