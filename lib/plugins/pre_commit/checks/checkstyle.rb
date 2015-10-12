@@ -54,7 +54,7 @@ module PreCommit
       end
 
       def alternate_config_file
-        Support::Path.relative_to('sun_checks.xml')
+        Support::Path.relative_to('google_checks.xml')
       end
 
       def format(errors)

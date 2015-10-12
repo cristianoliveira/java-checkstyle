@@ -10,7 +10,7 @@ describe PreCommit::Checks::Checkstyle do
   end
 
   it "succeeds for good code" do
-    files = [fixture_file('good.java')]
+    files = [fixture_file('Good.java')]
     expect(check.call(files)).to be_nil
   end
 
@@ -21,9 +21,7 @@ describe PreCommit::Checks::Checkstyle do
 
     expect(result).to include "File errors: #{file}"
     expect(result).to include "line: 1: error:"
-    expect(result).to include "line: 1:1 error:"
-    expect(result).to include "line: 2:3 error:"
-    expect(result).to include "line: 2:27 error:"
+    expect(result).to include "line: 1:7 error:"
   end
 
   it "should accept multiple fails" do
@@ -41,12 +39,12 @@ describe PreCommit::Checks::Checkstyle do
 
   it "should accept custom checkstyle" do
     # given
-    files = [fixture_file('good.java')]
+    files = [fixture_file('bad.java')]
     custom_config = double(PreCommit::Configuration,
-                           get: fixture_file('google_checks.xml'))
+                           get: fixture_file('sun_checks.xml'))
     # when
     check.config = custom_config
     # then
-    expect(check.call(files)).to be_nil
+    expect(check.call(files)).to_not be_nil
   end
 end

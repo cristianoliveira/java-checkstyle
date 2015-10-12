@@ -23,10 +23,15 @@ module PreCommit
 
       private
 
+      def line(error)
+        "  line: #{error['line']}:#{error['column']}"\
+          " error: #{error['message']}\n"
+      end
+
       def format_errors(errors)
+        return line(errors) unless errors.is_a? Array
         errors.reduce('') do |out, error|
-          out + "  line: #{error['line']}:#{error['column']}"\
-            " error: #{error['message']}\n"
+          out + line(error)
         end
       end
 

@@ -1,20 +1,21 @@
 /**
  * Typical hello world example.
+ * It has a good style.
  */
-final class HelloWorld {
+final class Good {
   /**
    * Prevent class from being instantiated.
    *
-   * @throws AssertionError
+   * @throws AssertionError if some smart guy try.
    */
-  private HelloWorld() {
+  public Good() {
     throw new AssertionError("Instantiating utility class...");
   }
 
   /**
    * Prints Hello World!
    *
-   * @param args Command line arguments
+   * @param args Command line arguments.
    */
   public static void main(final String[] args) {
     System.out.println("Hello World!");
