@@ -1,6 +1,7 @@
 module Domain
   ##
-  # Represents the
+  # Represents the Checkstyle
+  # @param [Array] of bad files
   class Checkstyle
     attr_reader :bad_files
 
@@ -9,15 +10,15 @@ module Domain
     end
 
     ##
-    # An Checkstyle empty means no errors.
+    # A good checkstyle means no errors.
     #
-    def empty?
+    def good?
       @bad_files.nil? || @bad_files.empty?
     end
 
     ##
     # Factory for Checkstyle without errors
-    def self.empty
+    def self.good
       Domain::Checkstyle.new(nil)
     end
   end

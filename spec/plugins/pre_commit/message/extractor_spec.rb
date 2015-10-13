@@ -8,21 +8,28 @@ require 'plugins/pre-commit/domain/bad_file'
 describe PreCommit::Message::Extractor do
   let(:extractor) { PreCommit::Message::Extractor.new }
 
-  context "empty output" do
-    it "should return empty file for nil output" do
+  context "When nil output" do
+    it "should be good" do
       result = extractor.extract nil
-      expect(result).to be_empty
-    end
-
-    it "should return empty file for empty output" do
-      result = extractor.extract ''
-      expect(result).to be_empty
+      expect(result).to be_good
     end
   end
 
-  context "has one bad file" do
+  context "When empty output" do
+    it "should be good" do
+      result = extractor.extract ''
+      expect(result).to be_good
+    end
+  end
+
+  context "When has one bad file" do
     # given
     let(:output) { IO.read(fixture_file("output_one_bad_file.log")) }
+
+    it "should not be good" do
+      result = extractor.extract output
+      expect(result).to_not be_good
+    end
 
     it "should contain one single file" do
       result = extractor.extract output
@@ -57,8 +64,13 @@ describe PreCommit::Message::Extractor do
     end
   end
 
-  context "has multiple bad files" do
+  context "When has multiple bad files" do
     let(:output) { IO.read(fixture_file("output_two_bad_files.log")) }
+
+    it "should not be good" do
+      result = extractor.extract output
+      expect(result).to_not be_good
+    end
 
     it "should extract multiple files" do
       result = extractor.extract output

@@ -12,7 +12,7 @@ module PreCommit
       #
       def format(checkstyle)
         throw ArgumentError.new if checkstyle.nil?
-        return nil if checkstyle.empty?
+        return nil if checkstyle.good?
 
         format_multiple(checkstyle.bad_files)
       end

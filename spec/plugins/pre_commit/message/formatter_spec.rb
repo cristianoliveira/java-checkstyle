@@ -35,8 +35,8 @@ describe PreCommit::Message::Formatter do
   end
 
   context "When has no errors" do
-    let(:errors) { Domain::Checkstyle.empty }
-    it { expect(formatter.format(errors)).to be_nil }
+    let(:good) { Domain::Checkstyle.good }
+    it { expect(formatter.format(good)).to be_nil }
   end
 
   context "When has one file" do

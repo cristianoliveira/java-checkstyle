@@ -8,14 +8,14 @@ module PreCommit
     # Responsible for extract error messages from terminal output
     class Extractor
       ##
-      # Extract data from a XML formatted +output+
+      # Extract data from a XML formatted +terminal_output+
       #
-      # @param output [String] Xml formatted ouput
-      # @return [Hash]
-      def extract(output)
-        return Domain::Checkstyle.empty if output.nil? || output.empty?
-        xml_data = Crack::XML.parse(xml_content(output))
+      # @param terminal_output [String] XML formatted terminal ouput
+      # @return [Domain::Checkstyle] The checkstyle
+      def extract(terminal_output)
+        return Domain::Checkstyle.good if blank? terminal_output
 
+        xml_data = Crack::XML.parse(xml_content_of(terminal_output))
         files = xml_data['checkstyle']['file']
 
         Domain::Checkstyle.new(extract_bad_file(files))
@@ -23,25 +23,27 @@ module PreCommit
 
       private
 
-      def xml_content(raw_output)
+      def xml_content_of(raw_output)
         raw_output[/<(.*)>/m]
       end
 
       def extract_bad_file(xml_files)
-        return [create_bad_file(xml_files)] unless xml_files.is_a? Array
-
-        xml_files.reduce([]) { |a, e| a.push(create_bad_file(e)) }
+        return [bad_file(xml_files)] unless xml_files.is_a? Array
+        xml_files.map { |e| bad_file(e) }
       end
 
-      def create_bad_file(file)
-        Domain::BadFile.new(file['name'], extract_errors(file['error']))
+      def bad_file(file)
+        Domain::BadFile.new(file['name'], extract_errors(file))
       end
 
-      def extract_errors(xml_errors)
-        return [] if xml_errors.nil? || xml_errors.empty?
-        return [xml_errors] unless xml_errors.is_a? Array
+      def extract_errors(file)
+        return [] if blank? file['error']
+        return [file['error']] unless file['error'].is_a? Array
+        file['error']
+      end
 
-        xml_errors
+      def blank?(value)
+        value.nil? || value.empty?
       end
     end
   end

@@ -10,7 +10,7 @@ module Support
     # @return [String] formatted path
     def self.relative_to(file)
       File.expand_path(
-        "../../../../dependencies/checkstyle/#{file}",
+        "../../../../resources/checkstyle/#{file}",
         __FILE__
       )
     end

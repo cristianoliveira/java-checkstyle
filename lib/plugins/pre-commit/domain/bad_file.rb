@@ -1,6 +1,6 @@
 module Domain
   ##
-  # Represents a file with checkstyle errors.
+  # Represents a file with style errors.
   #
   class BadFile
     attr_reader :name, :errors
@@ -8,8 +8,8 @@ module Domain
     ##
     # Instanciate a default bad file.
     #
-    # @param [String] name of the File
-    # @param [Array] file errors
+    # @param [String] The File name
+    # @param [Array] The errors
     def initialize(name, errors)
       @name = name
       @errors = errors
