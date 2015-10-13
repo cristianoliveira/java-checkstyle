@@ -39,12 +39,11 @@ describe PreCommit::Checks::Checkstyle do
 
   it "should accept custom checkstyle" do
     # given
+    ENV["CHECKSTYLE_CONFIG"] = "sun_checks.xml"
     files = [fixture_file('bad.java')]
-    custom_config = double(PreCommit::Configuration,
-                           get: fixture_file('sun_checks.xml'))
     # when
-    check.config = custom_config
+    result = check.call(files)
     # then
-    expect(check.call(files)).to_not be_nil
+    expect(result).to_not be_nil
   end
 end

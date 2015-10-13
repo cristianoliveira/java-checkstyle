@@ -7,4 +7,5 @@ gem 'crack'
 group :test do
   gem "codeclimate-test-reporter", require: nil
   gem 'rubocop', require: false
+  gem 'byebug'
 end
