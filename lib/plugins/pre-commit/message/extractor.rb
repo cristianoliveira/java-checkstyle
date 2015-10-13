@@ -13,7 +13,10 @@ module PreCommit
       # @param terminal_output [String] XML formatted terminal ouput
       # @return [Domain::Checkstyle] The checkstyle
       def extract(terminal_output)
-        return Domain::Checkstyle.good if blank? terminal_output
+        if blank?(terminal_output) ||
+           blank?(xml_content_of(terminal_output))
+          return Domain::Checkstyle.good
+        end
 
         xml_data = Crack::XML.parse(xml_content_of(terminal_output))
         files = xml_data['checkstyle']['file']
