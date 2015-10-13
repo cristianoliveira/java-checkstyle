@@ -6,7 +6,7 @@ module PreCommit
       ##
       # Format output for a given +errors+ details
       #
-      # @param [Hash] JSON errors details
+      # @param checkstyle [Domain::Checkstyle] Checkstyle details
       # @return [String] formatted output (may return nil)
       # @raise ArgumentError when input is empty
       #

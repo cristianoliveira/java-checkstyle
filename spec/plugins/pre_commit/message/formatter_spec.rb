@@ -27,7 +27,6 @@ describe PreCommit::Message::Formatter do
       "message"=>"some error message",
       "source"=>"com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"
     }])
-
   }
 
   context "When has empty input" do
@@ -42,8 +41,10 @@ describe PreCommit::Message::Formatter do
   context "When has one file" do
     let(:errors) { Domain::Checkstyle.new( [ file_error ] ) }
 
-    it{ expect(formatter.format(errors)).to include "File errors: /some/path/file_name.java"}
-    it{ expect(formatter.format(errors)).to include "  line: 1: error: some error message"}
+    before { @formatted_output = formatter.format(errors)}
+
+    it{ expect( @formatted_output ).to include "File errors: /some/path/file_name.java"}
+    it{ expect( @formatted_output ).to include "  line: 1: error: some error message"}
   end
 
   context "When has more than one file" do
@@ -51,9 +52,11 @@ describe PreCommit::Message::Formatter do
       Domain::Checkstyle.new( [ file_error, file_error_2 ] )
     end
 
-    it{ expect(formatter.format(errors)).to include "File errors: /some/path/file_name.java"}
-    it{ expect(formatter.format(errors)).to include "  line: 1: error: some error message"}
-    it{ expect(formatter.format(errors)).to include "File errors: /some/path/file_name2.java"}
-    it{ expect(formatter.format(errors)).to include "  line: 11:40 error: some error message"}
+    before { @formatted_output = formatter.format(errors) }
+
+    it{ expect( @formatted_output ).to include "File errors: /some/path/file_name.java"}
+    it{ expect( @formatted_output ).to include "  line: 1: error: some error message"}
+    it{ expect( @formatted_output ).to include "File errors: /some/path/file_name2.java"}
+    it{ expect( @formatted_output ).to include "  line: 11:40 error: some error message"}
   end
 end

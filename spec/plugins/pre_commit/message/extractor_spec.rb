@@ -10,15 +10,13 @@ describe PreCommit::Message::Extractor do
 
   context "When nil output" do
     it "should be good" do
-      result = extractor.extract nil
-      expect(result).to be_good
+      expect( extractor.extract(nil) ).to be_good
     end
   end
 
   context "When empty output" do
     it "should be good" do
-      result = extractor.extract ''
-      expect(result).to be_good
+      expect( extractor.extract('') ).to be_good
     end
   end
 
@@ -26,23 +24,25 @@ describe PreCommit::Message::Extractor do
     # given
     let(:output) { IO.read(fixture_file("output_one_bad_file.log")) }
 
+    # when
+    before { @checkstyle = extractor.extract(output) }
+
+    # then
     it "should not be good" do
-      result = extractor.extract output
-      expect(result).to_not be_good
+      expect( @checkstyle ).to_not be_good
     end
 
     it "should contain one single file" do
-      result = extractor.extract output
-      expect(result.bad_files).to be_a Array
+      expect( @checkstyle.bad_files ).to be_a Array
     end
 
     it "should contain its errors" do
-      result = extractor.extract output
-      expect(result.bad_files[0].errors.size).to eq 2
+      expect( @checkstyle.bad_files[0].errors.size ).to be 2
     end
 
     it "should extract error details" do
-      expected = [
+      expect( @checkstyle.bad_files[0].errors ).to eq(
+        [
           {
             "line"=>"1",
             "severity"=>"error",
@@ -56,35 +56,34 @@ describe PreCommit::Message::Extractor do
             "message" => "some error message",
             "source" => "com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"
           }
-      ]
-
-      result = extractor.extract output
-      errors = result.bad_files[0].errors
-      expect(errors).to eq expected
+        ]
+      )
     end
   end
 
   context "When has multiple bad files" do
+    # given
     let(:output) { IO.read(fixture_file("output_two_bad_files.log")) }
 
+    # when
+    before { @checkstyle = extractor.extract output }
+
+    # then
     it "should not be good" do
-      result = extractor.extract output
-      expect(result).to_not be_good
+      expect( @checkstyle ).to_not be_good
     end
 
     it "should extract multiple files" do
-      result = extractor.extract output
-      expect(result.bad_files).to be_a Array
+      expect( @checkstyle.bad_files ).to be_a Array
     end
 
     it "should extract their errors" do
-      result = extractor.extract output
-      expect(result.bad_files[0].errors.size).to eq 2
-      expect(result.bad_files[1].errors.size).to eq 2
+      expect( @checkstyle.bad_files[0].errors.size ).to be 2
+      expect( @checkstyle.bad_files[1].errors.size ).to be 2
     end
 
     it "should extract error details" do
-      expected = [
+      expect( @checkstyle.bad_files[0].errors ).to eq ([
           {
             "line"=>"1",
             "severity"=>"error",
@@ -98,11 +97,7 @@ describe PreCommit::Message::Extractor do
             "message" => "some error message",
             "source" => "com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"
           }
-      ]
-
-      result = extractor.extract output
-
-      expect(result.bad_files[0].errors).to eq expected
+      ])
     end
   end
 end

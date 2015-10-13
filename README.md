@@ -1,6 +1,6 @@
 ## Java - Pre-Commit Checkstyle
 [![Gem Version](https://badge.fury.io/rb/java-checkstyle.svg)](https://badge.fury.io/rb/java-checkstyle)
-[![Build Status](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle.svg?branch=dev)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
+[![Build Status](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle.svg)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
 [![Code Climate](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
 [![Test Coverage](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
 
@@ -17,11 +17,11 @@ and the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plug
 ## Installation
 
 First install the gems.
-### Pre-Commit Checkstyle
+#### Pre-Commit Checkstyle
 
     gem install pre-commit
 
-### Java Checkstyle Plugin
+#### Java Checkstyle Plugin
 
     gem install java-checkstyle
 
@@ -38,16 +38,10 @@ pre-commit install
 
 It will create a .git/hooks/pre-commit script which will check your git config and run checks that are enabled.
 
-### Enabling checks
+#### Enabling checks
 
 ``` bash
 pre-commit enable git checks checkstyle
-```
-
-OR
-
-``` bash
-pre-commit enable yaml checks checkstyle
 ```
 
 ### Result
