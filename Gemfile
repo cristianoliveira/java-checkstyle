@@ -7,5 +7,5 @@ gem 'crack'
 group :test do
   gem "codeclimate-test-reporter", require: nil
   gem 'rubocop', require: false
-  gem 'byebug'
+  # gem 'byebug' not add as default it is not compatible with ruby 2 >= version
 end

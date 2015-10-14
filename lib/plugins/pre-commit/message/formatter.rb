@@ -7,7 +7,7 @@ module PreCommit
       # Format output for a given +errors+ details
       #
       # @param checkstyle [Domain::Checkstyle] Checkstyle details
-      # @return [String] formatted output (may return nil)
+      # @return [String] formatted output or nil when has no errors
       # @raise ArgumentError when input is empty
       #
       def format(checkstyle)
@@ -28,9 +28,7 @@ module PreCommit
       end
 
       def format_errors(errors)
-        errors.reduce('') do |out, error|
-          out + line(error)
-        end
+        errors.reduce('') { |a, e| a + line(e) }
       end
 
       def line(error)
