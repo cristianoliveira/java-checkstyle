@@ -1,8 +1,8 @@
 ## Java - Pre-Commit Checkstyle
 [![Gem Version](https://badge.fury.io/rb/java-checkstyle.svg)](https://badge.fury.io/rb/java-checkstyle)
-[![Build Status](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle.svg)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
-[![Code Climate](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
-[![Test Coverage](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
+[![Build Status](https://travis-ci.org/cristianoliveira/java-checkstyle.svg)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
+[![Code Climate](https://codeclimate.com/github/cristianoliveira/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle)
+[![Test Coverage](https://codeclimate.com/github/cristianoliveira/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/CristianOliveiraDaRosa/java-checkstyle/coverage)
 
 Useful git pre-commit hook for linting Java code.
 
@@ -11,7 +11,7 @@ and the famous [Checkstyle](http://checkstyle.sourceforge.net/) linter as a plug
 
 ## Demo
 
-![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/CristianOliveiraDaRosa/java-checkstyle/master/readmedemo.png)
+![My awesome change has been catch. Oh boy!](https://raw.githubusercontent.com/cristianoliveira/java-checkstyle/master/readmedemo.png)
 [Don't you know who is Leeroy Jenkins?](https://www.youtube.com/watch?v=mLyOj_QD4a4)
 
 ## Installation
@@ -50,7 +50,7 @@ for you ensuring that your code will be always awesome.
 
 ---
 #### Detailed version to install.
-Still don't work? Try the detailed version [here](https://github.com/CristianOliveiraDaRosa/java-checkstyle/blob/master/DETAILED_TUTORIAL.md)
+Still don't work? Try the detailed version [here](https://github.com/cristianoliveira/java-checkstyle/blob/master/DETAILED_TUTORIAL.md)
 
 ---
 
