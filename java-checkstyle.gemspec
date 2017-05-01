@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require './lib/plugins/pre-commit/checkstyle/version.rb'
+require './lib/pre-commit/checkstyle/version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "java-checkstyle"
@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["blatyo@gmail.com", "contato@cristianoliveira.com.br", "alex.rochas@yahoo.com.br"]
   spec.summary       = %q{Checkstyle linter plugin for pre-commit}
   spec.description   = %q{Checkstyle linter plugin for pre-commit. Useful for linting Java code.}
-  spec.homepage      = "https://github.com/CristianOliveiraDaRosa/java-checkstyle"
+  spec.homepage      = "https://github.com/CristianOliveira/java-checkstyle"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
