@@ -5,6 +5,7 @@ gemspec
 gem 'crack'
 
 group :test do
+  gem "simplecov"
   gem "codeclimate-test-reporter", require: nil
   gem 'rubocop', require: false
   # gem 'byebug' not add as default it is not compatible with ruby 2 >= version
