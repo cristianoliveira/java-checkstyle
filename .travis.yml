@@ -1,8 +1,8 @@
 language: ruby
 rvm:
-  - 1.9.3
   - 2.2.0
-  - jruby-19mode
+  - 2.3.0
+  - jruby-9.1.0.0
 
 script:
   - rake
