@@ -13,6 +13,6 @@ module PreCommit
   #
   # Main file: checks/checkstyle.rb
   module Checkstyle
-    VERSION = '1.0.4'.freeze
+    VERSION = '1.0.5'.freeze
   end
 end
