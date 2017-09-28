@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require './lib/pre_commit/checkstyle/version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pre-commit-checkstyle"
+  spec.name          = "java-checkstyle"
   spec.version       = PreCommit::Checkstyle::VERSION
   spec.authors       = ["Allen Madsen", "Cristian Oliveira", "Alex Rocha"]
   spec.email         = ["blatyo@gmail.com", "contato@cristianoliveira.com.br", "alex.rochas@yahoo.com.br"]
