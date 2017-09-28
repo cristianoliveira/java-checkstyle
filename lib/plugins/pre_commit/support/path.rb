@@ -1,7 +1,7 @@
 module Support
   ##
   # Responsible for provide relative paths to support files
-  # Files located under: /lib/plugin/pre-commit/support/checkstyle*
+  # Files located under: /lib/plugin/pre_commit/support/checkstyle*
   module Path
     ##
     # Return support path relative to a given +file+
