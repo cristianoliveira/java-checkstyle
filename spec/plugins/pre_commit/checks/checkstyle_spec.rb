@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'plugins/pre-commit/checks/checkstyle'
+require 'plugins/pre_commit/checks/checkstyle'
 
 describe PreCommit::Checks::Checkstyle do
   let(:config) {double(PreCommit::Configuration, get: '')}

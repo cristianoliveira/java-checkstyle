@@ -10,7 +10,7 @@ module PreCommit
     #
     # It provides a java checkstyle validation using checkstyle.jar
     # for details see:
-    # lib/pre-commit/support/checkstyle
+    # lib/pre_commit/support/checkstyle
     class Checkstyle < Shell
       ##
       # Function called after pre-commit execution

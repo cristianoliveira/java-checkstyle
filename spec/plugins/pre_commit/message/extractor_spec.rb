@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'plugins/pre-commit/message/extractor'
-require 'plugins/pre-commit/domain/checkstyle'
-require 'plugins/pre-commit/domain/bad_file'
+require 'plugins/pre_commit/message/extractor'
+require 'plugins/pre_commit/domain/checkstyle'
+require 'plugins/pre_commit/domain/bad_file'
 
 ##
 # Tests for PreCommit::Message::Extractor
