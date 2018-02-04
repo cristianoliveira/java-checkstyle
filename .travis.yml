@@ -5,5 +5,5 @@ rvm:
   - 2.4.0
 
 script:
-  - rake
+  - bundle exec rake
   - bundle exec rubocop lib/*
