@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pre-commit/checks/shell'
 require_relative '../message/extractor'
 require_relative '../message/formatter'

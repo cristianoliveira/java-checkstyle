@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # This is a fork version of the original
 # checkstyle:
@@ -13,6 +15,6 @@ module PreCommit
   #
   # Main file: checks/checkstyle.rb
   module Checkstyle
-    VERSION = '1.1.0'.freeze
+    VERSION = '1.1.0'
   end
 end

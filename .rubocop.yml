@@ -1,0 +1,11 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Exclude:
+    - 'Rakefile'
+    - 'Gemfile'
+    - 'java-checkstyle.gemspec'
+    - 'lib/resources/**/*'
+    - 'vendor/**/*'
+    - 'spec/**/*'
+

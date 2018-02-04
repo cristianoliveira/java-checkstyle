@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'crack'
 require_relative '../domain/checkstyle'
 require_relative '../domain/bad_file'

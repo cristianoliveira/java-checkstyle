@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Support
   ##
   # Responsible for provide relative paths to support files
