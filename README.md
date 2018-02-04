@@ -1,6 +1,6 @@
 ## Java - Pre-Commit Checkstyle
 [![Gem Version](https://badge.fury.io/rb/java-checkstyle.svg)](https://badge.fury.io/rb/java-checkstyle)
-[![Build Status](https://travis-ci.org/cristianoliveira/java-checkstyle.svg)](https://travis-ci.org/CristianOliveiraDaRosa/java-checkstyle)
+[![Build Status](https://travis-ci.org/cristianoliveira/java-checkstyle.svg?branch=master)](https://travis-ci.org/cristianoliveira/java-checkstyle)
 [![Code Climate](https://codeclimate.com/github/cristianoliveira/java-checkstyle/badges/gpa.svg)](https://codeclimate.com/github/cristianoliveira/java-checkstyle)
 [![Test Coverage](https://codeclimate.com/github/cristianoliveira/java-checkstyle/badges/coverage.svg)](https://codeclimate.com/github/cristianoliveira/java-checkstyle/coverage)
 
@@ -82,7 +82,7 @@ rspec
 #### Codeclimate
 Before push, make sure you have been executed rubocop
 ``` bash
-rubocop lib/*
+bundle exec rake ci
 ```
 
 *Pull request should have Unit Tests*
